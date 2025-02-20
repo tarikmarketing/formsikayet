@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şikayetim Var</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .timer-message {
+            display: none;
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ŞikayetimVar.com</h2>
+        <h3>Bu platform, online bahis sektöründe kullanıcı deneyimlerinin şeffaf ve güvenilir bir şekilde paylaşılması için kurulmuştur. Amacımız, tarafsız ve objektif yorumlarla sektörde şeffaflığı artırmak, kullanıcılarımızın bilinçli tercihler yapmasına destek olmaktır. Platformumuzda yer alan formu dolduran üyelere ulaşarak, daha güvenli bir bahis deneyimi yaşamalarını sağlamayı hedeflemekteyiz.</h3>
+        <div class="timer-message" id="timerMessage">
+            Yeni bir şikayet göndermek için lütfen bekleyin.
+        </div>
+        <div class="error-message" id="errorMessage">
+            Lütfen en az bir iletişim yöntemi (e-posta veya telefon) belirtin.
+        </div>
+        <form id="sikayetForm">
+            <div class="form-group">
+                <label for="isim">İsim Soyisim:</label>
+                <input type="text" id="isim" name="isim" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-posta: (E-posta veya telefon zorunludur)</label>
+                <div class="input-group">
+                    <input type="text" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" style="display: none">
+                    <input type="text" id="emailUser" name="emailUser" style="flex: 1;">
+                    <select id="emailDomain" name="emailDomain">
+                        <option value="@gmail.com">@gmail.com</option>
+                        <option value="@hotmail.com">@hotmail.com</option>
+                        <option value="@outlook.com">@outlook.com</option>
+                        <option value="@yahoo.com">@yahoo.com</option>
+                        <option value="@icloud.com">@icloud.com</option>
+                        <option value="custom">Diğer</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="telefon">Telefon Numarası: (E-posta veya telefon zorunludur)</label>
+                <div class="input-group">
+                    <select id="ulkeKodu" name="ulkeKodu">
+                        <option value="+90">🇹🇷 Türkiye (+90)</option>
+                        <option value="+93">🇦🇫 Afganistan (+93)</option>
+                        <option value="+355">🇦🇱 Arnavutluk (+355)</option>
+                        <option value="+213">🇩🇿 Cezayir (+213)</option>
+                        <option value="+376">🇦🇩 Andorra (+376)</option>
+                        <option value="+244">🇦🇴 Angola (+244)</option>
+                        <option value="+54">🇦🇷 Arjantin (+54)</option>
+                        <option value="+374">🇦🇲 Ermenistan (+374)</option>
+                        <option value="+61">🇦🇺 Avustralya (+61)</option>
+                        <option value="+43">🇦🇹 Avusturya (+43)</option>
+                        <option value="+994">🇦🇿 Azerbaycan (+994)</option>
+                        <option value="+973">🇧🇭 Bahreyn (+973)</option>
+                        <option value="+880">🇧🇩 Bangladeş (+880)</option>
+                        <option value="+375">🇧🇾 Belarus (+375)</option>
+                        <option value="+32">🇧🇪 Belçika (+32)</option>
+                        <option value="+591">🇧🇴 Bolivya (+591)</option>
+                        <option value="+387">🇧🇦 Bosna Hersek (+387)</option>
+                        <option value="+55">🇧🇷 Brezilya (+55)</option>
+                        <option value="+359">🇧🇬 Bulgaristan (+359)</option>
+                        <option value="+855">🇰🇭 Kamboçya (+855)</option>
+                        <option value="+237">🇨🇲 Kamerun (+237)</option>
+                        <option value="+1">🇨🇦 Kanada (+1)</option>
+                        <option value="+56">🇨🇱 Şili (+56)</option>
+                        <option value="+86">🇨🇳 Çin (+86)</option>
+                        <option value="+57">🇨🇴 Kolombiya (+57)</option>
+                        <option value="+385">🇭🇷 Hırvatistan (+385)</option>
+                        <option value="+357">🇨🇾 Kıbrıs (+357)</option>
+                        <option value="+420">🇨🇿 Çek Cumhuriyeti (+420)</option>
+                        <option value="+45">🇩🇰 Danimarka (+45)</option>
+                        <option value="+20">🇪🇬 Mısır (+20)</option>
+                        <option value="+372">🇪🇪 Estonya (+372)</option>
+                        <option value="+358">🇫🇮 Finlandiya (+358)</option>
+                        <option value="+33">🇫🇷 Fransa (+33)</option>
+                        <option value="+995">🇬🇪 Gürcistan (+995)</option>
+                        <option value="+49">🇩🇪 Almanya (+49)</option>
+                        <option value="+30">🇬🇷 Yunanistan (+30)</option>
+                        <option value="+36">🇭🇺 Macaristan (+36)</option>
+                        <option value="+354">🇮🇸 İzlanda (+354)</option>
+                        <option value="+91">🇮🇳 Hindistan (+91)</option>
+                        <option value="+62">🇮🇩 Endonezya (+62)</option>
+                        <option value="+98">🇮🇷 İran (+98)</option>
+                        <option value="+964">🇮🇶 Irak (+964)</option>
+                        <option value="+353">🇮🇪 İrlanda (+353)</option>
+                        <option value="+972">🇮🇱 İsrail (+972)</option>
+                        <option value="+39">🇮🇹 İtalya (+39)</option>
+                        <option value="+81">🇯🇵 Japonya (+81)</option>
+                        <option value="+962">🇯🇴 Ürdün (+962)</option>
+                        <option value="+7">🇰🇿 Kazakistan (+7)</option>
+                        <option value="+965">🇰🇼 Kuveyt (+965)</option>
+                        <option value="+996">🇰🇬 Kırgızistan (+996)</option>
+                        <option value="+371">🇱🇻 Letonya (+371)</option>
+                        <option value="+961">🇱🇧 Lübnan (+961)</option>
+                        <option value="+370">🇱🇹 Litvanya (+370)</option>
+                        <option value="+352">🇱🇺 Lüksemburg (+352)</option>
+                        <option value="+389">🇲🇰 Makedonya (+389)</option>
+                        <option value="+60">🇲🇾 Malezya (+60)</option>
+                        <option value="+356">🇲🇹 Malta (+356)</option>
+                        <option value="+52">🇲🇽 Meksika (+52)</option>
+                        <option value="+373">🇲🇩 Moldova (+373)</option>
+                        <option value="+377">🇲🇨 Monako (+377)</option>
+                        <option value="+976">🇲🇳 Moğolistan (+976)</option>
+                        <option value="+212">🇲🇦 Fas (+212)</option>
+                        <option value="+95">🇲🇲 Myanmar (+95)</option>
+                        <option value="+977">🇳🇵 Nepal (+977)</option>
+                        <option value="+31">🇳🇱 Hollanda (+31)</option>
+                        <option value="+64">🇳🇿 Yeni Zelanda (+64)</option>
+                        <option value="+234">🇳🇬 Nijerya (+234)</option>
+                        <option value="+47">🇳🇴 Norveç (+47)</option>
+                        <option value="+968">🇴🇲 Umman (+968)</option>
+                        <option value="+92">🇵🇰 Pakistan (+92)</option>
+                        <option value="+970">🇵🇸 Filistin (+970)</option>
+                        <option value="+507">🇵🇦 Panama (+507)</option>
+                        <option value="+63">🇵🇭 Filipinler (+63)</option>
+                        <option value="+48">🇵🇱 Polonya (+48)</option>
+                        <option value="+351">🇵🇹 Portekiz (+351)</option>
+                        <option value="+974">🇶🇦 Katar (+974)</option>
+                        <option value="+382">🇲🇪 Karadağ (+382)</option>
+                        <option value="+40">🇷🇴 Romanya (+40)</option>
+                        <option value="+7">🇷🇺 Rusya (+7)</option>
+                        <option value="+966">🇸🇦 Suudi Arabistan (+966)</option>
+                        <option value="+381">🇷🇸 Sırbistan (+381)</option>
+                        <option value="+65">🇸🇬 Singapur (+65)</option>
+                        <option value="+421">🇸🇰 Slovakya (+421)</option>
+                        <option value="+386">🇸🇮 Slovenya (+386)</option>
+                        <option value="+27">🇿🇦 Güney Afrika (+27)</option>
+                        <option value="+82">🇰🇷 Güney Kore (+82)</option>
+                        <option value="+34">🇪🇸 İspanya (+34)</option>
+                        <option value="+94">🇱🇰 Sri Lanka (+94)</option>
+                        <option value="+46">🇸🇪 İsveç (+46)</option>
+                        <option value="+41">🇨🇭 İsviçre (+41)</option>
+                        <option value="+886">🇹🇼 Tayvan (+886)</option>
+                        <option value="+992">🇹🇯 Tacikistan (+992)</option>
+                        <option value="+66">🇹🇭 Tayland (+66)</option>
+                        <option value="+216">🇹🇳 Tunus (+216)</option>
+                        <option value="+993">🇹🇲 Türkmenistan (+993)</option>
+                        <option value="+256">🇺🇬 Uganda (+256)</option>
+                        <option value="+380">🇺🇦 Ukrayna (+380)</option>
+                        <option value="+971">🇦🇪 BAE (+971)</option>
+                        <option value="+44">🇬🇧 Birleşik Krallık (+44)</option>
+                        <option value="+1">🇺🇸 ABD (+1)</option>
+                        <option value="+598">🇺🇾 Uruguay (+598)</option>
+                        <option value="+998">🇺🇿 Özbekistan (+998)</option>
+                        <option value="+58">🇻🇪 Venezuela (+58)</option>
+                        <option value="+84">🇻🇳 Vietnam (+84)</option>
+                        <option value="+967">🇾🇪 Yemen (+967)</option>
+                    </select>
+                    <input type="tel" 
+                           id="telefon" 
+                           name="telefon" 
+                           pattern="[0-9]{10}" 
+                           placeholder="5XX XXX XXXX" 
+                           oninvalid="this.setCustomValidity('')"
+                           oninput="validatePhone(this)">
+                </div>
+                <div id="phoneError" class="input-error-message">
+                    Lütfen geçerli bir telefon numarası girin (Örnek: 5XX XXX XXXX)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sikayet">Şikayetiniz:</label>
+                <textarea id="sikayet" name="sikayet" required></textarea>
+            </div>
+
+            <button type="submit">Gönder</button>
+        </form>
+        <div class="success-message" id="successMessage">
+            Şikayetiniz başarıyla gönderildi!
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function validatePhone(input) {
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^[0-9]{10}$/;
+            
+            if (input.value && !phoneRegex.test(input.value)) {
+                input.classList.add('input-error');
+                phoneError.style.display = 'block';
+                input.setCustomValidity('Lütfen geçerli bir telefon numarası girin');
+            } else {
+                input.classList.remove('input-error');
+                phoneError.style.display = 'none';
+                input.setCustomValidity('');
+            }
+        }
+    </script>
+</body>
+</html>
